@@ -1,5 +1,9 @@
+resource "random_id" "dynamodb_suffix" {
+  byte_length = 4
+}
+
 resource "aws_dynamodb_table" "expenses" {
-  name           = "Expenses"
+  name           = "Expenses_${random_id.dynamodb_suffix.hex}"
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "userId"
   range_key      = "date"
