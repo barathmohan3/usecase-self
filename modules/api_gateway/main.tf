@@ -1,7 +1,6 @@
 
 module "lambda" {
   source = "../lambda"  # Adjust path as needed
-  region = "us-east-1"
   # Pass any required variables here
 }
 
