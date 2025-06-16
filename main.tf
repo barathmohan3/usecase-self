@@ -1,5 +1,6 @@
 module "api_gateway" {
   source = "./modules/api_gateway"
+  region = "us-east-1"
 }
 
 module "lambda" {
