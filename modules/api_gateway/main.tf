@@ -1,7 +1,7 @@
 
 module "lambda" {
-  source = "./modules/lambda"  # Adjust the path to your lambda module
-  # Pass any required variables here
+  source = "../lambda"  # Adjust path as needed
+  # Pass any required variables here
 }
 
 resource "aws_api_gateway_rest_api" "expense_api" {
