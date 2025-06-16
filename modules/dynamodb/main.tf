@@ -1,0 +1,20 @@
+resource "aws_dynamodb_table" "expenses" {
+  name           = "Expenses"
+  billing_mode   = "PAY_PER_REQUEST"
+  hash_key       = "userId"
+  range_key      = "date"
+
+  attribute {
+    name = "userId"
+    type = "S"
+  }
+
+  attribute {
+    name = "date"
+    type = "S"
+  }
+}
+
+output "table_name" {
+  value = aws_dynamodb_table.expenses.name
+}

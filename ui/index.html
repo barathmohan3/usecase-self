@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Expense Tracker</title></head>
+<body>
+<h2>Daily Expenses</h2>
+<input type="date" id="dateInput">
+<button onclick="fetchExpenses()">Get Expenses</button>
+<pre id="output"></pre>
+<script>
+  async function fetchExpenses() {
+    const date = document.getElementById('dateInput').value;
+    const res = await fetch(`https://abc123xyz.execute-api.us-east-2.amazonaws.com/prod/expenses?date=${date}`);
+    const data = await res.json();
+    document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+  }
+</script>
+</body>
+</html>
