@@ -1,3 +1,9 @@
+
+module "lambda" {
+  source = "./modules/lambda"  # Adjust the path to your lambda module
+  # Pass any required variables here
+}
+
 resource "aws_api_gateway_rest_api" "expense_api" {
   name        = "ExpenseTrackerAPI"
   description = "API for managing daily expenses"
