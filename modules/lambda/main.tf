@@ -8,10 +8,6 @@ data "archive_file" "lambda_zip" {
   output_path = "${path.module}/lambda_function.zip"
 }
 
-resource "random_id" "lambda_suffix" {
-  byte_length = 4
-}
-
 resource "aws_iam_role" "lambda_exec" {
   name = "lambda_exec_role_${random_id.lambda_suffix.hex}"
   assume_role_policy = jsonencode({
