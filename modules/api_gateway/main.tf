@@ -1,4 +1,3 @@
-
 module "lambda" {
   source = "../lambda"  # Adjust path as needed
   # Pass any required variables here
@@ -59,7 +58,12 @@ resource "aws_api_gateway_deployment" "deployment" {
     aws_api_gateway_integration.lambda_summary_get
   ]
   rest_api_id = aws_api_gateway_rest_api.expense_api.id
-  stage_name  = "prod"
+}
+
+resource "aws_api_gateway_stage" "prod" {
+  stage_name    = "prod"
+  rest_api_id   = aws_api_gateway_rest_api.expense_api.id
+  deployment_id = aws_api_gateway_deployment.deployment.id
 }
 
 output "api_url" {
