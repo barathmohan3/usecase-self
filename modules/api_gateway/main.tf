@@ -52,6 +52,15 @@ resource "aws_api_gateway_integration" "lambda_summary_get" {
   uri                     = module.lambda.lambda_invoke_arn
 }
 
+resource "aws_lambda_permission" "apigw_expenses" {
+  statement_id  = "AllowAPIGatewayInvokeExpenses"
+  action        = "lambda:InvokeFunction"
+  function_name = module.lambda.lambda_function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.expense_api.execution_arn}/*/*"
+}
+
+
 resource "aws_api_gateway_deployment" "deployment" {
   depends_on = [
     aws_api_gateway_integration.lambda_expenses_get,
