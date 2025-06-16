@@ -1,6 +1,5 @@
-
 variable "region" {
-  description = "AWS region"
-  type        = string
-  value       = "us-east-1"
+  description = "AWS region"
+  type        = string
+  region      = "us-east-1"
 }
