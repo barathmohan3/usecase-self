@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 resource "random_id" "dynamodb_suffix" {
   byte_length = 4
 }
