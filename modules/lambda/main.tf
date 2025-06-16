@@ -31,8 +31,12 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+resource "random_id" "lambda_suffix" {
+  byte_length = 4
+}
+
 resource "aws_lambda_function" "expense_lambda" {
-  function_name    = "expenseTracker"
+  function_name    = "expenseTracker_${random_id.lambda_suffix.hex}"
   runtime          = "python3.11"
   handler          = "lambda_function.lambda_handler"
   filename         = data.archive_file.lambda_zip.output_path
